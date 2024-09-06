@@ -2,6 +2,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Need to install package :
+
+```bash
+npx create-next-app@latest
+
+npm i axios react-google-recaptcha-v3 node-fetch
+#or
+npm install
+```
+
 First, run the development server:
 
 ```bash
