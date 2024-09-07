@@ -54,15 +54,14 @@ export default function Home() {
     <div className="flex justify-center items-center h-screen">
       <Head>
         <title>Google ReCaptcha</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/captcha.png" />
       </Head>
-      <div className="flex flex-col items-center justify-center shadow-xl border-2 border-orange-100 w-1/4 h-auto px-10 py-16 rounded-md bg-slate-50">
-        <h2 className="text-2xl font-bold font-mono mb-6">Register here...</h2>
-        <form onSubmit={(e) => handleSubmit(e)}>
+      <div className="wrapper">
+        <h2>Register here...</h2>
+        <form onSubmit={(e) => handleSubmit(e)} className="w-full">
           <input 
             type="text" 
-            placeholder="Enter your name" 
-            className="border-2 border-orange-200 font-mono w-full mb-5 p-3 rounded-md" 
+            placeholder="Enter your name"  
             onChange={handleChange}
             value={name}
             name="name"
@@ -71,7 +70,6 @@ export default function Home() {
           <input 
             type="email" 
             placeholder="Enter your email" 
-            className="border-2 border-orange-200 font-mono w-full mb-5 p-3 rounded-md" 
             onChange={handleChange}
             value={email}
             name="email"
@@ -79,14 +77,18 @@ export default function Home() {
           />
           <button 
             type="submit"
-            className="font-mono bg-orange-300 rounded-md p-2 w-full text-gray-700 mb-3"
-          >Register</button>
+          >
+            Register
+          </button>
 
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            onChange={(value) => handleCaptchaKeyChange(value)}
-          />
+          <div className="recaptcha">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              onChange={(value) => handleCaptchaKeyChange(value)}
+              className="w-full sm:max-w-xs"
+            />
+          </div>
         </form>
       </div>
     </div>
